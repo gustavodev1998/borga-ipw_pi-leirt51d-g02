@@ -1,0 +1,78 @@
+    {{#if gameFlag}} 
+        <style>
+            #home {
+                height: auto;
+            }
+        </style>
+    {{/if}}
+
+<ul class="group_info_title">
+    <li>Identifier : {{group.id}}</li>
+    <li>Name: {{group.name}}</li>
+    <li>Description: {{group.description}}</li>
+  
+    {{#if gameFlag}} 
+        <li>Games: </li>
+        <table border="true">
+            <tr>
+                <td>Image</td>
+                <td>Identifier</td>
+                <td>Name</td>
+                <td>Description</td>
+                <td>Mechanics</td>
+                <td>Categories</td>
+                <td>Url</td>
+            </tr>
+
+            {{#each group.games}}
+                <tr  id="gameRow_{{id}}" class="gameRow">
+                    <td><img src="{{image}}"></td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{description}}</td>
+                    
+                    <td>
+                        {{#each mechanics}}
+                            <ul>{{name}}</ul>
+                        {{/each}}
+                    </td>
+                    <td>
+                        {{#each categories}}
+                            <ul>{{name}}</ul>
+                        {{/each}}
+                    </td>
+
+                    <td>
+                        <a href="{{url}}" target="_blank">Click here to go to your game</a>
+                    </td>
+                    <td><a id="btn_{{id}}" class="btn_delete"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            {{/each}}
+            
+        </table>
+
+        <div style="display: flex; align-items: center; justify-content: center" id="group_btns" class="withGameButton">
+            <form method="GET" action="/groups/{{group.id}}/game" >
+                <button class="btn" type="submit">Add game</button>
+            </form>
+
+            <form method="GET" action="/groups/{{group.id}}/edit"  >
+                <button class="btn" type="submit">Edit group</button>
+            </form>
+        </div>
+
+  
+    {{else}} 
+        <li>This group has no games</li>
+        <div style="flex-direction: column;" id="group_btns" class="withNoGameButton">
+            <form method="GET" action="/groups/{{group.id}}/game" >
+                <button class="btn" type="submit">Add game</button>
+            </form>
+
+            <form method="GET" action="/groups/{{group.id}}/edit"  >
+                <button class="btn" type="submit">Edit group</button>
+            </form>
+        </div>
+    {{/if}}
+</ul>

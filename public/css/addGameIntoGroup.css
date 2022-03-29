@@ -1,0 +1,28 @@
+#home {
+  height: auto;
+}
+
+table {
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+}
+
+form {
+  flex-direction: row;
+  width: 30%;
+  padding: 0;
+}
+
+svg {
+  color: black;
+}
+
+table a {
+  color: #005dd9;
+}
+
+tr td:nth-child(8) {
+  background: var(--body-color);
+  border: none;
+}

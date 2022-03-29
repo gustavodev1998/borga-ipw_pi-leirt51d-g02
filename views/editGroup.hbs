@@ -1,0 +1,18 @@
+<h1>Edit your group information</h1>
+
+<a class="edit-camp">
+    <p class="edit-camp-name">Identifier: </p>
+    <input id="group_id" type=text value="{{group.id}}" disabled >
+</a>
+
+<a class="edit-camp">
+    <p class="edit-camp-name">Name: </p>
+    <input id="group_name" type=text value="{{group.name}}" required>
+</a>
+
+<a class="edit-camp">
+    <p class="edit-camp-name">Description: </p>
+    <textarea id="group_description" cols="80" rows="10">{{group.description}}</textarea>
+</a>
+
+<input type="submit" name="submit" value="Update" id="submitBtn" class="btn" style="width: 10%">

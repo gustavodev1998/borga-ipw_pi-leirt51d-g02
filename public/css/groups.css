@@ -1,0 +1,24 @@
+table {
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+}
+
+tr td:nth-child(8) {
+  background: var(--body-color);
+  border: none;
+}
+
+.group_info_title li {
+  margin-bottom: 0.5rem;
+}
+
+.withNoGameButton form {
+  padding: 0;
+  align-items: baseline;
+}
+
+.withGameButton form {
+  width: 15%;
+  flex: 0;
+}

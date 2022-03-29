@@ -1,0 +1,12 @@
+.form-createGroup {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.nameLabel,
+.descriptionLabel {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}

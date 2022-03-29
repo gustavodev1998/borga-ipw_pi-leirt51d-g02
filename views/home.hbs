@@ -1,0 +1,21 @@
+<div class="text">
+
+        <h2 class="title">
+                Welcome to your borga application here you can find all the information about your group and favourite games
+        </h2>
+
+        <p class="subtitle">
+                Stop searching, in here you can find everything about your favourite game subjects
+        </p>
+
+        {{#if username}} 
+                <div class="button">
+                        <a href="/groups" class="btn">Let's Explore</a>
+                </div>
+        {{else}} 
+                <div class="button">
+                        <a href="/login" class="btn">Let's Explore</a>
+                </div>
+        {{/if}}
+
+</div>

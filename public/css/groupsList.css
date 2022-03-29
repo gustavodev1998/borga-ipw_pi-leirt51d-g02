@@ -1,0 +1,38 @@
+tr td:nth-child(1),
+tr td:nth-child(2) {
+  width: 2%;
+}
+
+tr td:nth-child(3) {
+  width: 3%;
+}
+tr td:nth-child(4) {
+  width: 0%;
+  background: var(--body-color);
+  border: none;
+}
+
+tr td:nth-child(4) a {
+  cursor: pointer;
+}
+
+.table-merge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input:not([type='checkbox']) {
+  width: 15%;
+}
+
+table {
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+}
+
+label {
+  margin-right: 0;
+  margin-bottom: 1rem;
+}

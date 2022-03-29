@@ -1,0 +1,274 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+ul {
+  list-style: none; /* Retira o ponto */
+}
+
+a {
+  text-decoration: none; /* Retira underline */
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* VARIABLES */
+:root {
+  --header-height: 4.5rem; /*
+  
+      /* Colors */
+  --base-color: #162840;
+  --primary-color: #162840;
+
+  /* HSL color mode */
+  --hue: 159;
+  --body-color: hsl(0 0% 98%);
+
+  --title-color: hsl(var(--hue) 41% 10%);
+  --text-color: hsl(0 0% 46%);
+  --text-color-light: hsl(0 0% 98%);
+
+  /* FONTS */
+  --title-font-size: 1.875rem;
+  --subtitle-font-size: 1rem;
+
+  --title-font: 'Montserrat', sans-serif;
+  --body-font: 'DM Sans', sans-serif;
+}
+
+/* BASE */
+body {
+  color: var(--text-color);
+  background: var(--body-color);
+  -webkit-font-smoothing: antialiased;
+  font: 400 1rem var(--body-font-size);
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  width: 11rem;
+  height: 3rem;
+  margin-top: 1rem;
+  padding: 0 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--primary-color);
+  color: var(--text-color-light);
+  font: 700 1rem var(--body-font);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+
+  border-radius: 0.25rem;
+  cursor: pointer;
+  opacity: 0.92;
+  transition: all ease-in-out 0.3s;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+/* GAP BETWEEN ELEMENTS INSIDE THIS BOX */
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.title {
+  font: 700 var(--title-font-size) var(--title-font);
+  color: var(--title-color);
+  -webkit-font-smoothing: auto;
+  text-align: center;
+}
+
+.subtitle {
+  color: #000;
+  text-align: center;
+  font: 400 var(--subtitle-font-size) var(--title-font);
+}
+
+/* PADDING SEPARATING EACH SECTION ON TOP & BOTTOM */
+.section {
+  padding: calc(2rem + var(--header-height)) 0;
+}
+
+.section .title {
+  margin-bottom: 2rem;
+}
+
+.section .subtitle {
+  line-height: 2rem;
+}
+
+.section .text {
+  margin-top: 2.6rem;
+}
+
+/* LAYOUT */
+#header {
+  width: 100%;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e4e4e4;
+  background-color: var(--body-color);
+}
+
+/* LOGO */
+.logo {
+  color: var(--title-color);
+  font: 400 1.2rem var(--title-font);
+}
+
+.logo span {
+  font-weight: 700;
+  color: var(--base-color);
+}
+
+/* NAVIGATION */
+nav {
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav ul li {
+  text-align: center;
+}
+
+nav ul li a {
+  position: relative;
+  transition: 0.2s;
+}
+
+nav ul li a:hover {
+  color: var(--base-color);
+}
+
+nav .menu ul {
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 1rem;
+}
+
+nav ul li:last-child {
+  margin-right: 0rem;
+}
+
+nav form a {
+  font-weight: bold;
+  color: black;
+}
+
+/* HOME */
+#home {
+  overflow: hidden;
+}
+
+#home {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#home .container {
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+/* FOOTER */
+footer {
+  background: var(--primary-color);
+}
+
+footer.section {
+  padding: 3rem 0;
+  width: 100%;
+  height: 20vh;
+}
+
+footer .brand .logo {
+  color: var(--body-color);
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+footer .brand .logo span {
+  color: #fff;
+}
+
+footer .brand p {
+  margin-bottom: 0.75rem;
+  color: var(--text-color-light);
+}
+
+/* NOT FOUND PAGE */
+.notFoundTitle {
+  font-size: 8rem;
+}
+
+.notFoundSubTitle {
+  font-size: 2rem;
+}
+
+/* ICONS */
+.fa-user {
+  margin-right: 0.5rem;
+  color: #000;
+}
+
+/* Columns Specification */
+#home.homeStyle {
+  height: 80vh;
+}
+
+.groups_btn-direction {
+  width: 100%;
+  justify-content: baseline;
+  flex-direction: column;
+}
+
+/* EDIT GROUP GENERIC */
+.edit-camp {
+  display: flex;
+  align-items: baseline;
+  flex-direction: column;
+}
+
+.edit-camp-name {
+  margin-right: 1rem;
+}
+
+#group_id,
+#group_name {
+  width: 25%;
+}
+#group_description {
+  width: 40%;
+}

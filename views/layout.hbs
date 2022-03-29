@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BorgaService Web Application</title>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    {{!-- FONTAWSOME --}}
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg=""></script>
+
+    {{!-- CSS --}}
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/basicForm.css">
+    <link rel="stylesheet" href="/css/game.css">
+    <link rel="stylesheet" href="/css/createGroup.css">
+    <link rel="stylesheet" href="/css/login.css">
+
+
+  {{!-- CSS FOR EACH SPECIFIC CLASS --}}
+    {{#if pageLoginSpecificCss}}
+      <link rel="stylesheet" href="/css/pageLoginSpecific.css">
+    {{/if}}
+
+    {{#if groupsListCss}}
+      <link rel="stylesheet" href="/css/groupsList.css">
+    {{/if}}
+
+    {{#if groupsCss}}
+      <link rel="stylesheet" href="/css/groups.css">
+    {{/if}}
+
+    {{#if groupGameCss}}
+      <link rel="stylesheet" href="/css/addGameIntoGroup.css">
+    {{/if}}
+
+    {{#if createUserCss}}
+      <link rel="stylesheet" href="/css/createUser.css">
+    {{/if}}
+
+    {{!-- JAVASCRIPT FOR SPECIFIC CLASSES --}}
+    {{#if scriptName}}
+      <script type='text/javascript' src="/javascripts/{{scriptName}}.js"></script>
+    {{/if}}
+
+    {{#if scriptNamePlus}}
+      <script type='text/javascript' src="/javascripts/{{scriptNamePlus}}.js"></script>
+    {{/if}}
+
+    {{!-- Message Alert --}}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  </head>
+
+  <body>
+
+   <!-- Header -->
+    <header id="header">
+      <nav class="container">
+        <a href="/" class="logo"><span>BORGA WEB APP</span></a>
+     
+        <div class="menu">
+          <ul>
+              
+            {{#if username}} 
+              <li><a href="/"> Home </a></li>
+              <li><a href="/groups"> Groups </a></li>
+              <li><a href="/games"> Games </a></li>
+
+              <i class="fas fa-user"></i>
+              <form method="post" action="/logout" class="logout-form" style="padding: 0; cursor: pointer">
+                  <input type="hidden" value="Logout" name="logout">
+                  <a onClick="this.parentNode.submit()">{{username}}</a>
+              </form>
+      
+            {{else}} 
+              <li><a href="/"> Home </a></li>
+              <li><a href="/login"> Login </a></li>
+              <li><a href="/users"> Sign in </a></li>
+            {{/if}}
+
+
+          </ul>
+        </div>
+      </nav>
+    </header>
+ 
+  {{!-- MAIN CONTENT --}}
+    <main>
+      {{!-- HOME PAGE --}}
+      <section class="section" id="home">
+        <div class="container grid">
+          {{{body}}}
+        </div>
+      </section>
+    </main>
+
+  {{!-- FOOTER --}}
+    <footer class="section">
+      <div class="container grid">
+
+        <div class="brand">
+          <a href="#" class="logo"><span>GRUPO</span>02 LEIRT</a>
+          <p>Copyright ©2021</p>
+          <p>Todos os direitos reservados.</p>
+        </div>
+        
+     </div>
+   </footer>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<div class="container-form">
+    <form action="/users" method="POST" id="createUser-form">
+
+        <div class="form-control">
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username" placeholder="Enter your user name" required />
+        </div>
+
+        <div class="form-control">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password" required />
+        </div>
+
+    
+        <div class="form-control">
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm the password" required 
+            type="text"/>
+        </div>
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="policy" required/>
+            <label for="policy">I agree to the Terms of Services and I have read and acknowledge the Privacy Notice. required</label>
+        </div>
+
+        <input type="submit" name="submit" value="Register" id="submitBtn" class="btn">
+
+    </form>
+</div>

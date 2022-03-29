@@ -1,0 +1,88 @@
+
+<div class="text">
+    <h2 class="title">
+        Games
+    </h2>
+</div>
+
+{{#if addFlag}} 
+    <form method="GET" action="/groups/{{groupId}}/game" id="myform" name="myform" >
+        <input type="text" id="nameInput" name="name" placeholder=" Insert the game name" class="gameInput">
+        <a href="#"  class="myform_submit">
+            <i class="fas fa-search"></i>
+        </a>
+    </form>
+{{else}}
+    <form method="GET" action="/games" id="myform" name="myform" >
+        <input type="text" id="nameInput" name="name" placeholder=" Insert the game name" class="gameInput">
+        <a href="#"  class="myform_submit">
+            <i class="fas fa-search"></i>
+        </a>
+    </form>
+{{/if}}
+
+   
+<table border="true">
+    <tr>
+        <td>Image</td>
+        <td>Identifier</td>
+        <td>Name</td>
+        <td>Description</td>
+        <td>Mechanics</td>
+        <td>Categories</td>
+        <td>Url</td>
+    </tr>
+
+    {{#if addFlag}} 
+        {{#each games}}
+                <tr>
+                    <td><img src="{{image}}"></td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{description}}</td>
+                    <td>
+                        {{#each mechanics}}
+                            <ul>{{name}}</ul>
+                        {{/each}}
+                    </td>
+                    <td>
+                        {{#each categories}}
+                            <ul>{{name}}</ul>
+                        {{/each}}
+                    </td>
+                    <td>  
+                        <a href="{{url}}" target="_blank">Click here to go to your game</a>
+                    </td>
+                    <td><a href="" id="btn_{{id}}" class="btn_add"><i class="fas fa-plus-square"></i></a> 
+                    </td>
+                </tr>  
+        {{/each}}
+   
+    {{else}} 
+        {{#each games}}
+            <tr>
+                <td><img src="{{image}}"></td>
+                <td>{{id}}</td>
+                <td>{{name}}</td>
+                <td>{{description}}</td>
+                
+                <td>
+                    {{#each mechanics}}
+                        <ul>{{name}}</ul>
+                    {{/each}}
+                </td>
+                <td>
+                    {{#each categories}}
+                        <ul>{{name}}</ul>
+                    {{/each}}
+                </td>
+
+                <td>  
+                    <a href="{{url}}" target="_blank">Click here to go to your game</a>
+                </td>
+            </tr>
+        {{/each}}
+    {{/if}}
+
+</table>
+

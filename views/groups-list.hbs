@@ -1,0 +1,39 @@
+
+{{#if existsGroups}}
+    <table border="true" id="group_table">
+        <tr>
+            <td>Identifier</td>
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+
+        <div class="text">
+            <h2 class="title">
+                Groups
+            </h2>
+        </div>
+    
+        {{#each groups}}
+            <tr id="groupRow_{{id}}">
+                <td><a href="groups/{{id}}">{{id}}</a></td>
+                <td>{{name}}</td>
+                <td>{{description}}</td>
+                <td>
+                    <a id="btn_{{id}}" class="btn_delete"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr> 
+        {{/each}}
+    </table>
+{{else}}
+    <div class="text">
+        <h2 class="title">
+            You dont have any groups
+        </h2>
+    </div>
+{{/if}}
+
+
+<form method="GET" action="/groups/create">
+    <label for="textInput">Make a new group:</label>
+    <input type="submit" value="Create" class="btn">
+</form>

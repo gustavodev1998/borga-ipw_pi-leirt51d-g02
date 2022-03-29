@@ -1,0 +1,473 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Tasks API",
+    "description": "This is a simple Tasks API",
+    "contact": {
+      "email": "gustavodev1998@outlook.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags": [
+    {
+      "name": "users"
+    },
+    {
+      "name": "games"
+    },
+    {
+      "name": "groups"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "summary": "create an user",
+        "operationId": "createUser",
+        "description": "Creates an user",
+        "tags": [
+          "users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "User to create",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User created",
+            "schema": {
+              "type": "object",
+              "required": [
+                "token"
+              ],
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input, user not created"
+          }
+        }
+      }
+    },
+    "/games": {
+      "get": {
+        "summary": "Get all games",
+        "operationId": "getAllGames",
+        "description": "Search for the most popular games",
+        "tags": [
+          "games"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "searchString",
+            "description": "Pass a search string for looking up games with that name",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Games fetched with sucess"
+          },
+          "400": {
+            "description": "Bad input parameter, no games found"
+          }
+        }
+      }
+    },
+    "/groups": {
+      "post": {
+        "summary": "Create a group",
+        "operationId": "createGroup",
+        "description": "Creates a group",
+        "tags": [
+          "groups"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "Name and description",
+            "description": "Name and description of the group",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Group created"
+          },
+          "400": {
+            "description": "Invalid input, object invalid"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get a list of all the groups",
+        "operationId": "getAllGroups",
+        "description": "Get a list of all the groups",
+        "tags": [
+          "groups"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Groups fetched with sucess",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          }
+        }
+      }
+    },
+    "/groups/{groupId}": {
+      "get": {
+        "summary": "Get a group by Id",
+        "operationId": "getGroupsById",
+        "description": "Get a group by Id",
+        "tags": [
+          "groups"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Id of the group",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Group fetched with sucess",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          },
+          "400": {
+            "description": "Invalid Id supplied"
+          }
+        }
+      },
+      "put": {
+        "summary": "Edit a group",
+        "operationId": "editGroup",
+        "description": "Edit a group",
+        "tags": [
+          "groups"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Id of the group",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Name and description",
+            "description": "Name and description of the group",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Group edited"
+          },
+          "404": {
+            "description": "Group not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a group by Id",
+        "operationId": "deleteGroupById",
+        "description": "Delete a group by Id",
+        "tags": [
+          "groups"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Id of the group to be deleted",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Group deleted with sucess"
+          },
+          "400": {
+            "description": "Invalid group Id"
+          },
+          "404": {
+            "description": "Task not found"
+          }
+        }
+      }
+    },
+    "/groups/{groupId}/game/{gameId}": {
+      "put": {
+        "summary": "Add a game in a group",
+        "operationId": "addGameIntoGroup",
+        "description": "Add a game in a group",
+        "tags": [
+          "groups"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Id of the group",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "gameId",
+            "in": "path",
+            "description": "Id of the game",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Game added to a group"
+          },
+          "404": {
+            "description": "Group or game Id incorrect, resource not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a game in a group",
+        "operationId": "deleteGameFromGroup",
+        "description": "Delete a game in a group",
+        "tags": [
+          "groups"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Id of the group",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "gameId",
+            "in": "path",
+            "description": "Id of the game",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Game deleted from a group with sucess"
+          },
+          "400": {
+            "description": "Invalid Id supplied"
+          },
+          "404": {
+            "description": "Task not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Game": {
+      "type": "object",
+      "required": [
+        "gameId",
+        "gameName",
+        "gameDescription"
+      ],
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "example": "7NYbgH2Z2I"
+        },
+        "gameName": {
+          "type": "string",
+          "example": "game1"
+        },
+        "gameDescription": {
+          "type": "string",
+          "example": "description_of_game"
+        }
+      }
+    },
+    "Group": {
+      "type": "object",
+      "required": [
+        "groupId",
+        "groupName",
+        "groupDescription",
+        "games",
+        "userId"
+      ],
+      "properties": {
+        "groupId": {
+          "type": "integer",
+          "example": 1
+        },
+        "groupName": {
+          "type": "string",
+          "example": "grupo1"
+        },
+        "groupDescription": {
+          "type": "string",
+          "example": "description_of_group"
+        },
+        "games": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Game"
+          }
+        },
+        "userId": {
+          "type": "integer",
+          "example": 1
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "required": [
+        "userId",
+        "userName",
+        "token"
+      ],
+      "properties": {
+        "userId": {
+          "type": "integer",
+          "example": 1
+        },
+        "userName": {
+          "type": "string",
+          "example": "Mara"
+        },
+        "token": {
+          "type": "string",
+          "example": "d4a6e61e-25c8-400c-8da6-dc254818c66b",
+          "format": "uuid"
+        }
+      }
+    }
+  }
+}
